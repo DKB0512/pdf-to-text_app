@@ -1,3 +1,4 @@
+import 'package:http/http.dart';
 import 'package:path/path.dart';
 import 'package:dio/dio.dart' as dio;
 import 'dart:convert';
@@ -28,7 +29,7 @@ class FileUploadBloc {
 }
 
 class FileUploadService {
-  Future<FileUploadBloc> getTextData(String path) async {
+  Future<String> getTextData(String path) async {
     String url = "http://api.rest7.com/v1/pdf_to_text.php?file=";
     // ignore: prefer_typing_uninitialized_variables
     var fileuploadBloc;
@@ -46,7 +47,8 @@ class FileUploadService {
       );
       if (response.statusCode == 200) {
         final fileuploadBloc = fileUploadBlocFromJson(response.data);
-        return fileuploadBloc;
+        final responseData = await get(Uri.parse(fileuploadBloc.file));
+        return responseData.body;
       }
     } on dio.DioError catch (e) {
       if (e.response != null) {}

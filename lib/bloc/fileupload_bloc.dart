@@ -14,7 +14,7 @@ class FileuploadBloc extends Bloc<FileuploadEvent, FileuploadState> {
     on<FileUpload>((event, emit) async {
       emit(FileuploadLoading());
       final result = await _fileUploadService.getTextData(event.filePath);
-      emit(FileuploadResult(result.file));
+      emit(FileuploadResult(result));
     });
   }
 }

@@ -1,7 +1,6 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:http/http.dart';
 import 'package:pdf_upload_app/bloc/fileupload_bloc.dart';
 import 'package:pdf_upload_app/file_services.dart';
 
@@ -14,20 +13,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   String filePath = "";
-  String data = "";
-
-  Future<dynamic> fetchData(String url) async {
-    final response = await get(Uri.parse(url));
-
-    setState(() {
-      data = response.body;
-    });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,12 +57,11 @@ class _HomePageState extends State<HomePage> {
                       );
                     }
                     if (state is FileuploadResult) {
-                      fetchData(state.textResult);
                       return Container(
                         margin: const EdgeInsets.symmetric(horizontal: 20.0),
                         child: Column(
                           children: [
-                            Text(data),
+                            Text(state.textResult),
                             const SizedBox(
                               height: 20.0,
                             ),
