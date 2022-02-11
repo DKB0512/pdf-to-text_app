@@ -2,7 +2,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pdf_upload_app/bloc/fileupload_bloc.dart';
-import 'package:pdf_upload_app/file_services.dart';
+import 'package:pdf_upload_app/services/file_services.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
