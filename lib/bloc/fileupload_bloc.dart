@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
-import '../file_services.dart';
+import '../services/file_services.dart';
 
 part 'fileupload_event.dart';
 part 'fileupload_state.dart';
